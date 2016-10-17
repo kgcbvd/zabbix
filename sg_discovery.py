@@ -10,8 +10,7 @@ try:
 except IndexError:
         print('Use {0} dev_type'.format(sys.argv[0]))
         sys.exit(1)
-data = {}
-data["data"] = []
+data = []
 for disk in disks:
         dev_name_type = {}
         if disk:
@@ -26,7 +25,6 @@ for disk in disks:
                 if not exit_code:
                         dev_name_type["{#DEVNAME}"] = disk
                         dev_name_type["{#DEVTYPE}"] = dev_type
-                        data["data"].append(dev_name_type)
+                        data.append(dev_name_type)
 
-print(json.dumps(data))
-
+print(json.dumps({"data": data}))
